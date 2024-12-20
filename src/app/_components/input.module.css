@@ -1,0 +1,31 @@
+.container {
+    margin-top: 40px;
+    display: flex;
+    gap: 10px;
+}
+
+.input {
+    width: 18vw;
+    height: 4vh;
+    border: none;
+    border-radius: 15px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
+}
+
+.input::placeholder {
+    position: absolute;
+    left: 15px;
+}
+
+.button {
+    width: 5vw;
+    height: 4vh;
+    border: none;
+    border-radius: 15px;
+    background-color: rgb(100,129,112);
+    color: white;
+    font-size: 15px;
+    cursor: pointer;
+
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
+}
