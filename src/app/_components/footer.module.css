@@ -1,0 +1,6 @@
+.p {
+    display: flex;
+    justify-content: flex-end;
+    font-weight: bold;
+    margin-right: 20px;
+}

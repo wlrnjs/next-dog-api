@@ -13,6 +13,7 @@
 
 .date > p, .where > p, .select > p {
     margin: 5px;
+    font-weight: bold;
 }
 
 .date > input {
