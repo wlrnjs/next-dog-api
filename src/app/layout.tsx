@@ -1,6 +1,7 @@
 import Searchbar from "@/app/_components/searchbar";
 import Footer from "@/app/_components/footer";
 import {ReactNode} from "react";
+import "./globals.css";
 
 export default function RootLayout({children}: { children: ReactNode }) {
   return (

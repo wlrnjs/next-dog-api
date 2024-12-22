@@ -6,6 +6,8 @@
     height: 10vh;
     font-weight: bold;
     font-size: 23px;
+    background-color: white;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.5);
 }
 
 .container > a {
@@ -81,6 +83,7 @@
     width: 0;
     height: 0;
     visibility: hidden;
+
 }
 
 .input:checked + label {

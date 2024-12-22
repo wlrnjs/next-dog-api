@@ -1,5 +1,9 @@
+import SheltersBox from "@/app/_components/sheltersBox";
+
 export default function Page() {
   return (
-    <div>shelters-page</div>
+    <>
+      <SheltersBox/>
+    </>
   )
 }
