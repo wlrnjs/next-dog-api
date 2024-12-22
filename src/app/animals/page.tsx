@@ -8,23 +8,23 @@ export default function Page() {
       <StrayBar/>
       <div className={style.boxContainer}>
         <DogBox/>
-        <DogBox/>
-        <DogBox/>
-        <DogBox/>
-        <DogBox/>
-        <DogBox/>
-        <DogBox/>
-        <DogBox/>
-        <DogBox/>
-        <DogBox/>
-        <DogBox/>
-        <DogBox/>
-        <DogBox/>
-        <DogBox/>
-        <DogBox/>
-        <DogBox/>
-        <DogBox/>
-        <DogBox/>
+        {/*<DogBox/>*/}
+        {/*<DogBox/>*/}
+        {/*<DogBox/>*/}
+        {/*<DogBox/>*/}
+        {/*<DogBox/>*/}
+        {/*<DogBox/>*/}
+        {/*<DogBox/>*/}
+        {/*<DogBox/>*/}
+        {/*<DogBox/>*/}
+        {/*<DogBox/>*/}
+        {/*<DogBox/>*/}
+        {/*<DogBox/>*/}
+        {/*<DogBox/>*/}
+        {/*<DogBox/>*/}
+        {/*<DogBox/>*/}
+        {/*<DogBox/>*/}
+        {/*<DogBox/>*/}
       </div>
     </>
   )
