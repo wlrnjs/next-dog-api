@@ -1,6 +1,6 @@
 import styles from "./page.module.css";
 import Input from "@/app/_components/input";
-import DogBox from "@/app/_components/dogBox";
+// import DogBox from "@/app/_components/dogBox";
 
 export default function Home() {
   return (
@@ -14,20 +14,20 @@ export default function Home() {
         <Input/>
       </div>
       <div className={styles.dogBox}>
-        <div className={styles.dogBox1}>
-          <DogBox/>
-          <DogBox/>
-          <DogBox/>
-          <DogBox/>
-          <DogBox/>
-        </div>
-        <div className={styles.dogBox2}>
-          <DogBox/>
-          <DogBox/>
-          <DogBox/>
-          <DogBox/>
-          <DogBox/>
-        </div>
+        {/*<div className={styles.dogBox1}>*/}
+        {/*  <DogBox/>*/}
+        {/*  <DogBox/>*/}
+        {/*  <DogBox/>*/}
+        {/*  <DogBox/>*/}
+        {/*  <DogBox/>*/}
+        {/*</div>*/}
+        {/*<div className={styles.dogBox2}>*/}
+        {/*  <DogBox/>*/}
+        {/*  <DogBox/>*/}
+        {/*  <DogBox/>*/}
+        {/*  <DogBox/>*/}
+        {/*  <DogBox/>*/}
+        {/*</div>*/}
       </div>
 
     </>

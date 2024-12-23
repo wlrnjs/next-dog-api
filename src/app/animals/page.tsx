@@ -6,11 +6,13 @@ import DogBox from "@/app/_components/dogBox";
 import {useEffect, useState} from "react";
 import {AnimalTypes} from "@/types";
 import {parseStringPromise} from "xml2js";
+import ContainerBox from "@/app/_components/containerBox";
+import SkeletonContainer from "@/app/_components/skeleton/skeletonContainer";
 
 // API 데이터를 가져오는 함수
 async function fetchAnimalData() {
   const response = await fetch(
-    `${process.env.NEXT_PUBLIC_API_SERVER_URL}/abandonmentPublicSrvc/abandonmentPublic?bgnde=20241101&endde=20241222&pageNo=1&numOfRows=18&serviceKey=${process.env.NEXT_PUBLIC_API_SERVER_KEY}`
+    `${process.env.NEXT_PUBLIC_API_SERVER_URL}/abandonmentPublicSrvc/abandonmentPublic?bgnde=20241101&pageNo=1&numOfRows=18&serviceKey=${process.env.NEXT_PUBLIC_API_SERVER_KEY}`
   );
 
   const text = await response.text();
@@ -40,6 +42,7 @@ export default function Page() {
         const data = await fetchAnimalData();
         setAnimals(data); // 데이터를 상태로 저장
         setLoading(false); // 로딩 상태 업데이트
+        console.log(data);
       } catch (error) {
         console.error("Error fetching animal data:", error);
         setLoading(false); // 에러가 발생해도 로딩 중단
@@ -49,11 +52,11 @@ export default function Page() {
   }, []);
 
   if (loading) {
-    return <p>Loading...</p>;
+    return <SkeletonContainer/>;
   }
 
   if (!animals || animals.length === 0) {
-    return <p>No animals found.</p>;
+    return <ContainerBox title='No animals found.' />;
   }
 
   return (

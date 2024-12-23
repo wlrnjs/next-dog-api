@@ -1,0 +1,52 @@
+.container {
+    width: 50vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    padding: 10px;
+    box-sizing: border-box;
+    overflow-y: auto;
+
+}
+
+.title {
+    display: flex;
+    align-items: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.title span {
+    margin-right: 10px;
+}
+
+.table {
+    width: 70%;
+    border-collapse: collapse;
+    border: 1px solid #ddd;
+}
+
+.table th,
+.table td {
+    text-align: left;
+    padding: 8px;
+}
+
+.table th {
+    background-color: #f9f9f9;
+    font-weight: bold;
+    width: 14vw;
+}
+
+.table td {
+    width: 36vw;
+}
+
+.table tr {
+    border-bottom: 1px solid #ddd;
+}
