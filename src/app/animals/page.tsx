@@ -5,36 +5,17 @@ import style from "./animals-page.module.css";
 import DogBox from "@/app/_components/dogBox";
 import {useEffect, useState} from "react";
 import {AnimalTypes} from "@/types";
-import {parseStringPromise} from "xml2js";
 import ContainerBox from "@/app/_components/containerBox";
 import SkeletonContainer from "@/app/_components/skeleton/skeletonContainer";
-
-// API 데이터를 가져오는 함수
-async function fetchAnimalData() {
-  const response = await fetch(
-    `${process.env.NEXT_PUBLIC_API_SERVER_URL}/abandonmentPublicSrvc/abandonmentPublic?bgnde=20241101&pageNo=1&numOfRows=18&serviceKey=${process.env.NEXT_PUBLIC_API_SERVER_KEY}`
-  );
-
-  const text = await response.text();
-  const jsonData = await parseStringPromise(text);
-
-  // 에러 처리
-  if (
-    jsonData.OpenAPI_ServiceResponse &&
-    jsonData.OpenAPI_ServiceResponse.cmmMsgHeader &&
-    jsonData.OpenAPI_ServiceResponse.cmmMsgHeader[0].errMsg
-  ) {
-    throw new Error(
-      `API Error: ${jsonData.OpenAPI_ServiceResponse.cmmMsgHeader[0].errMsg}`
-    );
-  }
-
-  return jsonData.response.body[0].items[0].item;
-}
+import fetchAnimalData from "@/app/_api/fetchAnimalData";
+import {useSearchParams} from "next/navigation";
 
 export default function Page() {
   const [animals, setAnimals] = useState<AnimalTypes[]>([]); // 상태로 API 데이터 관리
   const [loading, setLoading] = useState<boolean>(true); // 로딩 상태 관리
+
+  const searchParams = useSearchParams();
+  const desertionNo = searchParams.get("q");
 
   useEffect(() => {
     const fetchData = async () => {
@@ -68,6 +49,7 @@ export default function Page() {
                   {...animal}
           />
         ))}
+        <div>{desertionNo}</div>
       </div>
     </>
   );

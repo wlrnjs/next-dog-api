@@ -4,3 +4,9 @@ export interface AnimalTypes {
   age: string[];
   desertionNo: number;
 }
+
+export default interface AnimalData {
+  popfile: string[];
+  name: string[];
+  age: string[];
+}
