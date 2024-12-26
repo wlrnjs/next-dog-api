@@ -1,17 +1,14 @@
+"use client"
+
 import Image from "next/image";
 import style from "./dogBox.module.css";
-import { AnimalTypes } from "@/types";
-import { useRouter } from "next/navigation";
+import {AnimalTypes} from "@/types";
 
-export default function DogBox({ desertionNo, popfile, age, kindCd }: AnimalTypes) {
-  const router = useRouter();
-
-  const onClick = () => {
-    router.push(`/animal/${desertionNo}`);
-  };
-
+export default function DogBox({onClick, desertionNo, popfile, age, kindCd}: AnimalTypes & {
+  onClick: (desertionNo: string[]) => void
+}) {
   return (
-    <div className={style.container} onClick={onClick}>
+    <div className={style.container} onClick={() => onClick(desertionNo)}>
       <Image
         alt="Animal Image"
         src={popfile[0]}
