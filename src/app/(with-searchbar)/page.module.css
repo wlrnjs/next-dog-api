@@ -5,6 +5,7 @@
     position: absolute;
     left: 25vw;
     top: 6vw;
+    margin: 20px;
 }
 
 .box span:nth-child(1) {
@@ -19,13 +20,22 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-wrap: wrap;
-    margin-top: 35vh;
-}
-
-.dogBox1, .dogBox2 {
-    display: flex;
+    flex-direction: column;
+    margin-top: 40vh;
+    margin-bottom: 10vh;
     gap: 10px;
-    margin: 5px;
 }
 
+.p {
+    font-size: 20px;
+    font-weight: bold;
+    display: flex;
+    justify-content: flex-start;
+    align-self: flex-start;
+    margin-left: 5rem;
+    padding-bottom: 20px;
+}
+
+.p > span:nth-child(2) {
+    padding-left: 20px;
+}

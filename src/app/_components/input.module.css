@@ -27,6 +27,11 @@
     color: white;
     font-size: 15px;
     cursor: pointer;
+    transition: ease 0.3s;
 
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
+}
+
+.button:hover {
+    background-color: rgb(80,109,92);
 }

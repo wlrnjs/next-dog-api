@@ -1,6 +1,6 @@
 import styles from "./page.module.css";
 import Input from "@/app/_components/input";
-// import DogBox from "@/app/_components/dogBox";
+import ItemComponent from "@/app/(with-searchbar)/_components/itemComponent";
 
 export default function Home() {
   return (
@@ -14,20 +14,13 @@ export default function Home() {
         <Input/>
       </div>
       <div className={styles.dogBox}>
-        {/*<div className={styles.dogBox1}>*/}
-        {/*  <DogBox/>*/}
-        {/*  <DogBox/>*/}
-        {/*  <DogBox/>*/}
-        {/*  <DogBox/>*/}
-        {/*  <DogBox/>*/}
-        {/*</div>*/}
-        {/*<div className={styles.dogBox2}>*/}
-        {/*  <DogBox/>*/}
-        {/*  <DogBox/>*/}
-        {/*  <DogBox/>*/}
-        {/*  <DogBox/>*/}
-        {/*  <DogBox/>*/}
-        {/*</div>*/}
+        <div className={styles.p}>
+          <span>🐾🐾</span>
+          <span>공고 기한이 얼마남지 않은</span>
+        </div>
+        <div className={styles.item}>
+          <ItemComponent/>
+        </div>
       </div>
 
     </>

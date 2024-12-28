@@ -1,6 +1,6 @@
 import Searchbar from "@/app/_components/searchbar";
 import Footer from "@/app/_components/footer";
-import {ReactNode} from "react";
+import React, {ReactNode} from "react";
 import "./globals.css";
 
 export default function RootLayout({children}: { children: ReactNode }) {
@@ -14,7 +14,7 @@ export default function RootLayout({children}: { children: ReactNode }) {
         <main>{children}</main>
         <Footer/>
       </div>
-        <div id="modal-root"></div>
+      <div id="modal-root"></div>
       </body>
     </html>
   )

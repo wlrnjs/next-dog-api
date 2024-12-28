@@ -1,9 +1,9 @@
-import SheltersBox from "@/app/_components/sheltersBox";
+"use client";
+
+import React from "react";
 
 export default function Page() {
   return (
-    <>
-      <SheltersBox/>
-    </>
-  )
+    <div>123</div>
+  );
 }
