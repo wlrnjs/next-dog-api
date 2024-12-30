@@ -19,8 +19,10 @@ export default async function fetchAnimalInfo(q: string): Promise<AnimalData[]> 
     );
   }
 
+  console.log(jsonData); // 응답 데이터 출력
+
   const filteredData: AnimalData[] = (jsonData.response.body[0].items[0].item as AnimalData[]).filter(
-    (animal) => animal.desertionNo[0] === q
+    (animal) => animal.desertionNo[0] === q[0]
   );
 
   return filteredData;

@@ -9,7 +9,7 @@ import InfoBox from "@/app/animals/info/_component/infoBox";
 const Page = () => {
   const searchParams: ReadonlyURLSearchParams = useSearchParams()
   const q: string | null = searchParams.get("q");
-  console.log("desertionNo", q)
+  console.log("desertionNo", q);
 
   return (
       <div className={style.container}>

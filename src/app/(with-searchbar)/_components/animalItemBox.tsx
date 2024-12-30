@@ -2,16 +2,20 @@ import React from 'react';
 import style from "./animalItemBox.module.css"
 import Image from "next/image"
 
-const AnimalItemBox = () => {
+const AnimalItemBox = ({desertionNo, popfile, age, kindCd, onClick}) => {
   return (
-    <div className={style.container}>
+    <div className={style.container} onClick={() => onClick(desertionNo)}>
       <Image
-        src="/avatar.png" alt="이미지"
-        width={45} height={45}
-        className={style.image} />
+        src={popfile[0]}
+        alt="이미지"
+        width={245}
+        height={245}
+        className={style.image}
+        priority
+      />
       <div className={style.info}>
-        <h3>title</h3>
-        <p>0000년도</p>
+        <h3>{kindCd}</h3>
+        <p>{age}</p>
       </div>
     </div>
   );
