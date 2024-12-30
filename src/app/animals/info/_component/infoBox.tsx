@@ -33,7 +33,7 @@ const InfoBox = ({ q }: { q: string[] }) => {
 
   function changeDate(date: string): string {
     if (date.length !== 8) {
-      return "날짜 형식 오류"; // 입력 값이 예상되는 형식(8자리)이 아닌 경우
+      return "날짜 형식 오류";
     }
 
     const year = date.slice(0, 4);

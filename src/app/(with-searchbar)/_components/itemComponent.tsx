@@ -6,8 +6,8 @@ import AnimalItemBox from "@/app/(with-searchbar)/_components/animalItemBox";
 import {AnimalTypes} from "@/types";
 import {useRouter} from "next/navigation";
 import fetchMainData from "@/app/_api/fetchMainData";
-import SkeletonContainer from "@/app/_components/skeleton/skeletonContainer";
 import ContainerBox from "@/app/_components/containerBox";
+import SkeletonMainBox from "@/app/(with-searchbar)/_components/skeletonBox/skeletonMainBox";
 
 const ItemComponent = () => {
   const [data, setData] = useState<AnimalTypes[]>([]);
@@ -30,7 +30,7 @@ const ItemComponent = () => {
   }, []);
 
   if (loading) {
-    return <SkeletonContainer />;
+    return <SkeletonMainBox />;
   }
 
   if (!data || data.length === 0) {
@@ -40,6 +40,8 @@ const ItemComponent = () => {
   const onClick = (desertionNo: string) => {
     router.push(`/animals/info?q=${desertionNo}`);
   }
+
+
 
   return (
     <div className={style.container}>
