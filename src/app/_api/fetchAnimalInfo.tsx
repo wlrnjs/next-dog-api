@@ -3,7 +3,7 @@ import AnimalData from "@/types";
 
 export default async function fetchAnimalInfo(q: string): Promise<AnimalData[]> {
   const response = await fetch(
-    `${process.env.NEXT_PUBLIC_API_SERVER_URL}/abandonmentPublicSrvc/abandonmentPublic?numOfRows=18&serviceKey=${process.env.NEXT_PUBLIC_API_SERVER_KEY}`
+    `${process.env.NEXT_PUBLIC_API_SERVER_URL}/abandonmentPublicSrvc/abandonmentPublic?bgnde=20241101&pageNo=5&numOfRows=18&serviceKey=${process.env.NEXT_PUBLIC_API_SERVER_KEY}`
   );
 
   const text: string = await response.text();

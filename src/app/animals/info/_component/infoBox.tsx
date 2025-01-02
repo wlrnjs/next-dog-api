@@ -12,7 +12,8 @@ const InfoBox = ({q}: { q: string[] }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const data: AnimalData[] = await fetchAnimalInfo(q);
+        const data: AnimalData = await fetchAnimalInfo(q);
+        console.log("q:", q);
         console.log("Fetched data:", data);
         setAnimalData(data[0]);
       } catch (error) {
