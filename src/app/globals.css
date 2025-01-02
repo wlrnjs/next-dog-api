@@ -3,7 +3,7 @@ html, body {
     margin: 0;
     padding: 0;
     background-color: rgb(223,193,129);
-    overflow: hidden;
+    /*overflow: hidden;*/
     /*background-image: url("../../public/pet_adoption_background.jpg");*/
     /*background-size: cover;*/
     /*background-position: center;*/

@@ -1,0 +1,45 @@
+.reactPaginate {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    list-style-type: none;
+    padding: 0;
+}
+
+.pageItem {
+    margin: 0 8px;
+    cursor: pointer;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px 15px;
+    background-color: #f9f9f9;
+    font-size: 1rem;
+    font-weight: bold;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.pageItem:hover {
+    background-color: #007bff;
+    color: white;
+}
+
+.pageLink {
+    text-decoration: none;
+    color: inherit;
+}
+
+.activePage {
+    background-color: #007bff;
+    color: white;
+}
+
+.disabledPage {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.breakItem {
+    margin: 0 5px;
+    color: #666;
+    font-weight: bold;
+}

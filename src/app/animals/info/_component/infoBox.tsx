@@ -4,8 +4,10 @@ import React, {useEffect, useState} from "react";
 import style from "./infoBox.module.css";
 import fetchAnimalInfo from "@/app/_api/fetchAnimalInfo";
 import AnimalData from "@/animalInfo";
+import queryType from "@/queryType";
 
-const InfoBox = ({q}: { q: string[] }) => {
+
+const InfoBox: React.FC<queryType> = ({ q }: queryType) => {
   const [animalData, setAnimalData] = useState<AnimalData | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
 

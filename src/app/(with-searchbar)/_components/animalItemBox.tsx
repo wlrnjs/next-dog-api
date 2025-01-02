@@ -1,8 +1,17 @@
 import React from 'react';
 import style from "./animalItemBox.module.css"
-import Image from "next/image"
+import Image from "next/image";
 
-const AnimalItemBox = ({desertionNo, popfile, age, kindCd, onClick}) => {
+// AnimalItemBoxProps 인터페이스 정의
+interface AnimalItemBoxProps {
+  desertionNo: string;
+  popfile: string[];
+  age: string;
+  kindCd: string;
+  onClick: (desertionNo: string) => void;
+}
+
+const AnimalItemBox: React.FC<AnimalItemBoxProps> = ({ desertionNo, popfile, age, kindCd, onClick }) => {
   return (
     <div className={style.container} onClick={() => onClick(desertionNo)}>
       <Image

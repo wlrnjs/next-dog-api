@@ -1,8 +1,17 @@
-.boxContainer {
-    margin-top: 50px;
+.container {
     display: flex;
-    gap: 10px;
-    justify-content: center;
+    flex-direction: column;
+    margin: 1rem;
+    font-family: 'Arial', sans-serif;
     align-items: center;
-    flex-wrap: wrap;
+}
+
+.boxContainer {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 10px;
+    justify-items: center;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    width: 100%;
 }

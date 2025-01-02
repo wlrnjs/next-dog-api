@@ -4,35 +4,33 @@ import React, { useEffect, useState } from "react";
 import style from "./imgBox.module.css";
 import fetchAnimalInfo from "@/app/_api/fetchAnimalInfo";
 import Image from "next/image";
-import AnimalData from "@/types";
+import queryType from "@/queryType";
+import AnimalData from "@/animalDataTypes";
 
-interface ImgBoxProps {
-  q: string[];
-}
-
-const ImgBox: React.FC<ImgBoxProps> = ({q}: { q: string[] }) => {
+const ImgBox: React.FC<queryType> = ({ q }: queryType) => {
   const [animalData, setAnimalData] = useState<AnimalData | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
 
-  const fetchData = async () => {
-    try {
-      const data: AnimalData[] = await fetchAnimalInfo(q);
-      console.log('imgData:', data);
-      if (data.length > 0) {
-        setAnimalData(data[0]);
-      } else {
-        console.warn("No data found for the given query.");
-      }
-    } catch (error) {
-      console.error("Error fetching animal data:", error);
-    } finally {
-      setLoading(false);
-    }
-  };
-
   useEffect(() => {
+    const fetchData = async (): Promise<void> => {
+      try {
+        const data: AnimalData[] = await fetchAnimalInfo(q);
+        console.log("imgData:", data);
+        if (data.length > 0) {
+          setAnimalData(data[0]);
+        } else {
+          console.warn("No data found for the given query.");
+        }
+      } catch (error) {
+        console.error("Error fetching animal data:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
     fetchData();
   }, [q]);
+
+  console.log("animalData:", animalData);
 
   if (loading) {
     return <h1>Loading...</h1>;

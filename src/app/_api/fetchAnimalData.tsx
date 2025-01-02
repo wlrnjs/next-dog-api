@@ -2,7 +2,7 @@ import {parseStringPromise} from "xml2js";
 
 export default async function fetchAnimalData() {
   const response = await fetch(
-    `${process.env.NEXT_PUBLIC_API_SERVER_URL}/abandonmentPublicSrvc/abandonmentPublic?bgnde=20241101&pageNo=5&numOfRows=18&serviceKey=${process.env.NEXT_PUBLIC_API_SERVER_KEY}`
+    `${process.env.NEXT_PUBLIC_API_SERVER_URL}/abandonmentPublicSrvc/abandonmentPublic?bgnde=20241101&pageNo=5&numOfRows=18&totalCount=90&serviceKey=${process.env.NEXT_PUBLIC_API_SERVER_KEY}`
   );
 
   const text = await response.text();
