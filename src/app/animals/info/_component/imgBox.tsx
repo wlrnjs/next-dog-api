@@ -17,6 +17,7 @@ const ImgBox: React.FC<ImgBoxProps> = ({q}: { q: string[] }) => {
   const fetchData = async () => {
     try {
       const data: AnimalData[] = await fetchAnimalInfo(q);
+      console.log('imgData:', data);
       if (data.length > 0) {
         setAnimalData(data[0]);
       } else {

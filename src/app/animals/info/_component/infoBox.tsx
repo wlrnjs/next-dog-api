@@ -1,11 +1,11 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, {useEffect, useState} from "react";
 import style from "./infoBox.module.css";
 import fetchAnimalInfo from "@/app/_api/fetchAnimalInfo";
 import AnimalData from "@/animalInfo";
 
-const InfoBox = ({ q }: { q: string[] }) => {
+const InfoBox = ({q}: { q: string[] }) => {
   const [animalData, setAnimalData] = useState<AnimalData | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
 
@@ -13,6 +13,7 @@ const InfoBox = ({ q }: { q: string[] }) => {
     const fetchData = async () => {
       try {
         const data: AnimalData[] = await fetchAnimalInfo(q);
+        console.log("Fetched data:", data);
         setAnimalData(data[0]);
       } catch (error) {
         console.error("Error fetching animal data:", error);

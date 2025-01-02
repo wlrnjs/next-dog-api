@@ -39,3 +39,48 @@
 .p > span:nth-child(2) {
     padding-left: 20px;
 }
+
+.reactPaginate {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+    list-style-type: none;
+    padding: 0;
+}
+
+.pageItem {
+    margin: 0 5px;
+    cursor: pointer;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 8px 12px;
+    background-color: #f9f9f9;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.pageItem:hover {
+    background-color: #007bff;
+    color: white;
+}
+
+.pageLink {
+    text-decoration: none;
+    color: inherit;
+}
+
+.activePage {
+    background-color: #007bff;
+    color: white;
+    font-weight: bold;
+}
+
+.disabledPage {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.breakItem {
+    margin: 0 5px;
+    color: #666;
+}

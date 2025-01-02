@@ -19,6 +19,7 @@ const ItemComponent = () => {
       try {
         const data = await fetchMainData();
         setData(data);
+        console.log(data);
         setLoading(false);
         return data;
       } catch (error) {
@@ -30,18 +31,16 @@ const ItemComponent = () => {
   }, []);
 
   if (loading) {
-    return <SkeletonMainBox />;
+    return <SkeletonMainBox/>;
   }
 
   if (!data || data.length === 0) {
-    return <ContainerBox title="No animals found." />;
+    return <ContainerBox title="No animals found."/>;
   }
 
   const onClick = (desertionNo: string) => {
     router.push(`/animals/info?q=${desertionNo}`);
   }
-
-
 
   return (
     <div className={style.container}>

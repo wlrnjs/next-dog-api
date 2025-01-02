@@ -1,8 +1,24 @@
+"use client"
+
 import React, { useEffect, useRef } from 'react';
 import style from "./googleMaps.module.css";
+import fetchCenterData from "@/app/_api/fetchCenterData";
 
 const GoogleMaps = () => {
   const mapRef = useRef(null);
+
+  useEffect(() => {
+    const loadCenterData = async () => {
+      try {
+        const data = await fetchCenterData();
+        console.log('Fetched data:', data);
+      } catch (error) {
+        console.error('Error fetching center data:', error);
+      }
+    };
+
+    loadCenterData();
+  }, []);
 
   useEffect(() => {
     // Google Maps API 로드

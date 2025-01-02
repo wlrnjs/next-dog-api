@@ -8,6 +8,7 @@ export default async function fetchAnimalInfo(q: string): Promise<AnimalData[]> 
 
   const text: string = await response.text();
   const jsonData = await parseStringPromise(text); // xml -> json
+  console.log('Parsed JSON data:', jsonData); // 파싱된 JSON 데이터 로그
 
   if (
     jsonData.OpenAPI_ServiceResponse &&
@@ -19,7 +20,7 @@ export default async function fetchAnimalInfo(q: string): Promise<AnimalData[]> 
     );
   }
 
-  console.log(jsonData); // 응답 데이터 출력
+  console.log('jsonData:', jsonData); // 응답 데이터 출력
 
   const filteredData: AnimalData[] = (jsonData.response.body[0].items[0].item as AnimalData[]).filter(
     (animal) => animal.desertionNo[0] === q
