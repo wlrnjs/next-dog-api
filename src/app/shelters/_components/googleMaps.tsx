@@ -1,37 +1,46 @@
 "use client"
 
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import style from "./googleMaps.module.css";
-import fetchCenterData from "@/app/_api/fetchCenterData";
+// import fetchCenterData from "@/app/_api/fetchCenterData";
 
 const GoogleMaps = () => {
   const mapRef = useRef(null);
+  const [lat, setLat] = useState(null);
+  const [lng, setLng] = useState(null);
+  const mapInstance = useRef(null); // Google Maps 객체를 저장
+  const markerInstance = useRef(null); // 마커 객체를 저장
 
   useEffect(() => {
-    const loadCenterData = async () => {
-      try {
-        const data = await fetchCenterData();
-        console.log('Fetched data:', data);
-      } catch (error) {
-        console.error('Error fetching center data:', error);
-      }
-    };
-
-    loadCenterData();
+    navigator.geolocation.getCurrentPosition(
+      (pos) => {
+        const currentLat = pos.coords.latitude;
+        const currentLng = pos.coords.longitude;
+        setLat(currentLat);
+        setLng(currentLng);
+        console.log("현재 위치는: " + currentLat + ", " + currentLng);
+      },
+      (error) => console.error("Geolocation error:", error)
+    );
   }, []);
 
   useEffect(() => {
-    // Google Maps API 로드
     const loadGoogleMaps = () => {
       const script = document.createElement('script');
-      script.src = `https://maps.googleapis.com/maps/api/js?key=${process.env.NEXT_PUBLIC_GOOGLE_API_KEY}`;
+      script.src = `${process.env.NEXT_PUBLIC_GOOGLE_API_URL}?key=${process.env.NEXT_PUBLIC_GOOGLE_API_KEY}`;
       script.async = true;
       script.onload = () => {
-        // Google Maps 초기화
-        if (mapRef.current) {
-          new window.google.maps.Map(mapRef.current, {
-            center: { lat: 37.5665, lng: 126.9780 }, // 서울 좌표
-            zoom: 12,
+        if (mapRef.current && lat !== null && lng !== null) {
+          mapInstance.current = new window.google.maps.Map(mapRef.current, {
+            center: { lat, lng },
+            zoom: 11,
+          });
+
+          // 마커 추가
+          markerInstance.current = new window.google.maps.Marker({
+            position: { lat, lng },
+            map: mapInstance.current,
+            title: "현재위치",
           });
         }
       };
@@ -39,7 +48,16 @@ const GoogleMaps = () => {
     };
 
     loadGoogleMaps();
-  }, []);
+  }, [lat, lng]);
+
+  useEffect(() => {
+    if (markerInstance.current && lat !== null && lng !== null) {
+      markerInstance.current.setPosition({ lat, lng });
+    }
+    if (mapInstance.current && lat !== null && lng !== null) {
+      mapInstance.current.setCenter({ lat, lng });
+    }
+  }, [lat, lng]);
 
   return (
     <div className={style.container}>
