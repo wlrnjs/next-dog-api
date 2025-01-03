@@ -8,6 +8,9 @@ import { useRouter } from "next/navigation";
 import ContainerBox from "@/app/_components/containerBox";
 import SkeletonMainBox from "@/app/(with-searchbar)/_components/skeletonBox/skeletonMainBox";
 import fetchAnimalData from "@/app/_api/fetchAnimalData";
+import fetchSiDoData from "@/app/_api/fetchSiDoData";
+import fetchSiGunGuData from "@/app/_api/fetchSiGunGuData";
+import fetchTestData from "@/app/_api/fetchTestData";
 
 const ItemComponent = () => {
   const [data, setData] = useState<AnimalTypes[]>([]);
@@ -18,8 +21,14 @@ const ItemComponent = () => {
     const fetchData = async () => {
       try {
         const data = await fetchAnimalData();
+        const SidoData = await fetchSiDoData();
+        const SigunGuData = await fetchSiGunGuData();
+        const testData = await fetchTestData();
         setData(data);
         console.log(data);
+        console.log(SidoData);
+        console.log(SigunGuData);
+        console.log(testData);
         setLoading(false);
       } catch (error) {
         console.error("Error fetching animal data:", error);
