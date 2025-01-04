@@ -3,11 +3,13 @@ import React, {useState, useEffect} from "react";
 import {parseStringPromise} from "xml2js";
 
 export default function StrayBar({onFilterChange}: {
-  onFilterChange: (location: string, type: string, uprData: string) => void;
+  onFilterChange: (bgnde: string, endde: string, location: string, type: string, uprData: string) => void;
 }) {
   const [selectedLocation, setSelectedLocation] = useState("");
   const [selectedType, setSelectedType] = useState("");
   const [selectedUprData, setSelectedUprData] = useState("");
+  const [selectedBgnde, setSelectedBgnde] = useState("");
+  const [selectedEndde, setSelectedEndde] = useState("");
   const [gunguData, setGunguData] = useState<any[]>([]);
   const [uprCd, setUprCd] = useState<string | null>(null);
 
@@ -29,6 +31,25 @@ export default function StrayBar({onFilterChange}: {
   const handleUprDataChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     setSelectedUprData(event.target.value);
   };
+
+  // 날짜 값 하이폰 제거
+  const removeHyphensFromDate = (date: string) => {
+    return date.replace(/-/g, '');
+  }
+
+  // 시작일 변경
+  const handleStartDateChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const startDate = removeHyphensFromDate(event.target.value);
+    setSelectedBgnde(startDate);
+    console.log(startDate);
+  }
+
+  // 종료일 변경
+  const handleEndDateChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const endDate = removeHyphensFromDate(event.target.value);
+    setSelectedEndde(endDate);
+    console.log(endDate);
+  }
 
   // 군구 조회 api
   const fetchGunguData = async (uprCd: string): Promise<void> => {
@@ -54,13 +75,22 @@ export default function StrayBar({onFilterChange}: {
     if (!selectedLocation || !selectedType || !selectedUprData) {
       alert("위치, 군구 조회, 종류를 확인하세요");
     } else {
-      console.log("위치:", selectedLocation, "타입:", selectedType, "군구:", selectedUprData);
-      onFilterChange(selectedLocation, selectedType, selectedUprData);
+      console.log("공고시작일:", selectedBgnde, "공고종료일:",selectedEndde, "위치:", selectedLocation, "타입:", selectedType, "군구:", selectedUprData);
+      onFilterChange(selectedBgnde, selectedEndde ,selectedLocation, selectedType, selectedUprData);
     }
   };
 
   return (
     <div className={style.filterContainer}>
+      <div className={style.date}>
+        <p>시작일</p>
+        <input type="date" onChange={handleStartDateChange}/>
+      </div>
+      <div className={style.date}>
+        <p>종료일</p>
+        <input type="date" onChange={handleEndDateChange}/>
+      </div>
+
       <div className={style.where}>
         <p>위치</p>
         <select onChange={handleLocationChange} value={selectedLocation}>

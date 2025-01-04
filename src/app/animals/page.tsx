@@ -15,6 +15,8 @@ export default function Page() {
   const [animals, setAnimals] = useState<AnimalTypes[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [filters, setFilters] = useState({
+    bgnde: "",
+    endde: "",
     location: "",
     type: "",
     uprData: "",
@@ -26,21 +28,25 @@ export default function Page() {
     const baseUrl = `${process.env.NEXT_PUBLIC_API_SERVER_URL}/abandonmentPublicSrvc/abandonmentPublic`;
     const defaultParams = `?bgnde=20220101&pageNo=5&numOfRows=18&totalCount=90&serviceKey=${process.env.NEXT_PUBLIC_API_SERVER_KEY}`;
 
+    const changeParams = `?pageNo=5&numOfRows=18&totalCount=90&serviceKey=${process.env.NEXT_PUBLIC_API_SERVER_KEY}`;
+
     // 필터에 따라 동적 쿼리 생성
     const queryParams = [];
+    if (filters.bgnde) queryParams.push(`bgnde=${filters.bgnde}`);
+    if (filters.endde) queryParams.push(`endde=${filters.endde}`);
     if (filters.location) queryParams.push(`upr_cd=${filters.location}`);
     if (filters.uprData) queryParams.push(`org_cd=${filters.uprData}`);
     if (filters.type) queryParams.push(`upkind=${filters.type}`);
 
     return queryParams.length > 0
-      ? `${baseUrl}${defaultParams}&${queryParams.join("&")}`
+      ? `${baseUrl}${changeParams}&${queryParams.join("&")}`
       : `${baseUrl}${defaultParams}`;
   };
 
   // 필터 변경 시 상태 업데이트
-  const handleFilterChange = (location: string, type: string, uprData: string) => {
-    setFilters({ location, type, uprData });
-    console.log("필터 업데이트:", { location, type, uprData });
+  const handleFilterChange = (bgnde: string, endde: string, location: string, type: string, uprData: string) => {
+    setFilters({ bgnde, endde,location, type, uprData });
+    console.log("필터 업데이트:", { bgnde, endde, location, type, uprData });
   };
 
   // 데이터 fetch 함수
