@@ -13,7 +13,7 @@ export default function Page() {
   useEffect(() => {
     const kakaoMapScript = document.createElement('script')
     kakaoMapScript.async = false
-    kakaoMapScript.src = `//dapi.kakao.com/v2/maps/sdk.js?appkey=${process.env.NEXT_PUBLIC_KAKAO_API_KEY}&autoload=false`
+    kakaoMapScript.src = `${process.env.NEXT_PUBLIC_KAKAO_API_URL}?appkey=${process.env.NEXT_PUBLIC_KAKAO_API_KEY}&autoload=false`
     document.head.appendChild(kakaoMapScript)
 
     const onLoadKakaoAPI = () => {

@@ -1,7 +1,16 @@
+"use client"
+
 import style from "./searchbar.module.css"
 import Link from "next/link";
+import {useRouter} from "next/navigation";
 
 export default function Searchbar() {
+  const router = useRouter();
+
+  const goToLogin = () => {
+    router.push("/login");
+  }
+
   return (
     <div className={style.container}>
       <Link href={"/"}>
@@ -18,7 +27,7 @@ export default function Searchbar() {
         <input type="checkbox" id="darkmode-toggle" className={style.input}/>
         <label htmlFor="darkmode-toggle" className={style.label}></label>
         <div className={style.background}></div>
-        <div className={style.log}>Logout</div>
+        <div className={style.log} onClick={goToLogin}>Login</div>
       </div>
     </div>
   )
