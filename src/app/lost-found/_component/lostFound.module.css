@@ -1,0 +1,23 @@
+.nav ul {
+    display: flex;
+    list-style: none;
+}
+
+.nav ul li {
+    margin: 0 10px;
+    position: relative; /* 하단 border를 위한 상대 위치 */
+}
+
+.nav ul li:hover {
+    cursor: pointer;
+}
+
+.nav ul li:hover::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    width: 100%;
+    height: 1px;
+    background-color: black;
+}

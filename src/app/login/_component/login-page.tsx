@@ -16,13 +16,13 @@ const LoginPage = () => {
   }
 
   const join = () => {
-    router.push("/join")
+    router.push("/signup")
   }
 
   return (
     <div className={style.container}>
       <div className={style.box}>
-        <form className={style.form} action="">
+        <form className={style.form} action="POST" method="POST">
           <input className={style.input} type="text" placeholder="아이디"/>
           <input className={style.input} type="password" placeholder="비밀번호"/>
           <button className={style.button}>로그인</button>

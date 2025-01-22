@@ -1,9 +1,9 @@
-import ContainerBox from "@/app/_components/containerBox";
+import Container from "@/app/lost-found/_component/container";
 
 export default function Page() {
   return (
     <>
-      <ContainerBox title="Lost & Found"/>
+      <Container/>
     </>
   )
 }

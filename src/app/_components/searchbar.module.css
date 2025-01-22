@@ -112,3 +112,7 @@
 .log {
     cursor: pointer;
 }
+
+.log:hover {
+    text-decoration: underline;
+}
